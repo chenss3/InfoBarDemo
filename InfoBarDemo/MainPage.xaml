@@ -1,0 +1,117 @@
+﻿<Page
+    x:Class="InfoBarDemo.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:InfoBarDemo"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:data="using:InfoBarDemo.Models"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+
+        <SplitView x:Name="split" IsPaneOpen="True" OpenPaneLength="200" DisplayMode="Inline">
+            <SplitView.Pane>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="OneDrive Home" Style="{StaticResource BaseTextBlockStyle}" FontSize="20" Margin="12, 12, 0, 0"/>
+                    <ListBox x:Name="IconsListBox" SelectionChanged="IconsListBox_SelectionChanged" SelectionMode="Single" Grid.Row="1" Margin="12, 12, 0, 0">
+                        <ListBoxItem Name="FilesListBoxItem">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="24" Text="&#xE7C3;" />
+                                <TextBlock Text="Files" FontSize="20" Margin="20, 0, 0, 0"/>
+                            </StackPanel>
+                        </ListBoxItem>
+
+                        <ListBoxItem Name="FavoritesListBoxItem">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="24" Text="&#xE734;" />
+                                <TextBlock Text="Favorites" FontSize="20" Margin="20, 0, 0, 0"/>
+
+                            </StackPanel>
+                        </ListBoxItem>
+
+                    </ListBox>
+                </Grid>
+            </SplitView.Pane>
+            <SplitView.Content>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="7*"/>
+                        <ColumnDefinition Width="253*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="8*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.ColumnSpan="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="Files" FontSize="50" Margin="20, 12, 0, 0" Grid.Row="0"/>
+                        <TextBox VerticalAlignment="Bottom" Margin="20, 0, 0 , 20" HorizontalAlignment="Left" Width="261" Height="34" Text="" PlaceholderText="   Search" FontSize="20" Grid.Row="1"/>
+                        <StackPanel Grid.Row="1" VerticalAlignment="Bottom" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0, -10, 20, 20">
+                            <StackPanel Orientation="Horizontal" >
+                                <muxc:ProgressRing x:Name="SaveRing"  Height="25" Width="25" Margin="0,0,12,0" IsActive="False" />
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="25" Text="&#xE74E;" VerticalAlignment="Center"/>
+                                <Button x:Name="SaveButton" VerticalAlignment="Stretch" Content="Save" Background="Transparent" FontSize="20" Click="SaveButton_Click"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="12, 0, 0, 0">
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="25" Text="&#xE70F;" VerticalAlignment="Center"/>
+                                <Button VerticalAlignment="Stretch" Content="Edit" Background="Transparent" FontSize="20"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="12, 0, 0, 0">
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="25" Text="&#xE713;" VerticalAlignment="Center"/>
+                                <Button VerticalAlignment="Stretch" Content="Settings" Background="Transparent" FontSize="20"/>
+                            </StackPanel>
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="25" Text="&#xE712;" VerticalAlignment="Center" Margin="12, 0, 0, 0"/>
+                        </StackPanel>
+
+                    </Grid>
+
+                    <StackPanel Grid.Row="1" Grid.ColumnSpan="2">
+                        <local:InfoBar x:Name="DefaultBar" Title="Terms and Conditions Updated" Message="Before you can proceed you must read and accept the new Terms and Conditions." Severity="Default" IsOpen="True" Grid.Row="1">
+                            <local:InfoBar.HyperlinkButtonContent>
+                                <HyperlinkButton Content="Read here" NavigateUri="www.microsoft.com"/>
+                            </local:InfoBar.HyperlinkButtonContent>
+                        </local:InfoBar>
+                        <local:InfoBar x:Name="CriticalBar" Title="No Internet" Message="Reconnect to continue working." Severity="Critical" ShowCloseButton="False"  Grid.Row="1"/>
+                        <local:InfoBar x:Name="WarningBar" Title="Error While Saving" Message="Your document was unable to be saved." Severity="Warning" ActionButtonContent="Try Again" ActionButtonClick="WarningBar_ActionButtonClick" Grid.Row="1"/>
+                        <local:InfoBar x:Name="InformationalBar" Title="Update Available" Message="OneDrive 5.37 is available for your computer and is ready to install." Severity="Informational" ActionButtonContent="Update" ActionButtonClick="InformationalBar_ActionButtonClick" Grid.Row="1">
+                            <local:InfoBar.HyperlinkButtonContent>
+                                <HyperlinkButton Content="Learn more" NavigateUri="www.microsoft.com"/>
+                            </local:InfoBar.HyperlinkButtonContent>
+                        </local:InfoBar>
+                        <local:InfoBar x:Name="SuccessBar" Title="Update Successful" Severity="Success" Grid.Row="1"/>
+
+                        <GridView ItemsSource="{x:Bind Files}" Grid.Row="1">
+                            <GridView.ItemTemplate>
+                                <DataTemplate x:DataType="data:File">
+                                    <StackPanel Padding="12">
+                                        <Image Width="150" Height="150" Source="{x:Bind Thumbnail}"/>
+                                        <TextBlock FontSize="15" Text="{x:Bind Name}" TextWrapping="Wrap" HorizontalAlignment="Center" Foreground="#323130"/>
+                                        <TextBlock FontSize="13" Text="{x:Bind Date}" HorizontalAlignment="Center" Foreground="#605E5C"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridView.ItemTemplate>
+                        </GridView>
+
+                    </StackPanel>
+                    <Button x:Name="RefreshButton" FontFamily="Segoe MDL2 Assets" Content="&#xE72C;" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="50" Height="50" Margin="0, 0, 40, 20" CornerRadius="2,2,2,2" BorderThickness="1, 2, 2, 2" BorderBrush="DarkGray" Click="RefreshButton_Click" Grid.Column="1"/>
+                    
+                    <muxc:ProgressBar x:Name="UpdateProgress" Width="250" Height = "10" IsIndeterminate="True" ShowPaused="False" ShowError="False" Grid.Row="1" VerticalAlignment="Bottom" Grid.Column="1" Margin="0, 40" Visibility="Collapsed"/>
+                </Grid>
+            </SplitView.Content>
+
+        </SplitView>
+
+    </Grid>
+</Page>
