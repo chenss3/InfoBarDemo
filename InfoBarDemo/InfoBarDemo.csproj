@@ -123,6 +123,7 @@
       <DependentUpon>FavoritesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="InfoBar.cs" />
+    <Compile Include="InfoBarAutomationPeer.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>

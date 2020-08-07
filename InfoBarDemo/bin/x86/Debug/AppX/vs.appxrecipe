@@ -30,13 +30,13 @@
     <AppXManifest Include="C:\Users\t-soc\Repos\InfoBarDemo\InfoBarDemo\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-08-03T19:12:05.204</Modified>
+      <Modified>2020-08-05T16:19:31.730</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\t-soc\Repos\InfoBarDemo\InfoBarDemo\bin\x86\Debug\InfoBarDemo.exe">
       <PackagePath>entrypoint\InfoBarDemo.exe</PackagePath>
-      <Modified>2020-08-03T19:12:03.283</Modified>
+      <Modified>2020-08-05T16:19:29.755</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x86.microsoft.netcore.universalwindowsplatform\6.2.10\runtimes\win10-x86\lib\uap10.0.15138\System.Runtime.dll">
       <PackagePath>System.Runtime.dll</PackagePath>
@@ -126,23 +126,23 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\t-soc\Repos\InfoBarDemo\InfoBarDemo\bin\x86\Debug\InfoBarDemo.xr.xml">
       <PackagePath>InfoBarDemo.xr.xml</PackagePath>
-      <Modified>2020-08-03T17:16:54.897</Modified>
+      <Modified>2020-08-04T21:53:10.632</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\t-soc\Repos\InfoBarDemo\InfoBarDemo\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2020-08-03T19:12:02.923</Modified>
+      <Modified>2020-08-05T16:02:07.026</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\t-soc\Repos\InfoBarDemo\InfoBarDemo\bin\x86\Debug\FavoritesPage.xbf">
       <PackagePath>FavoritesPage.xbf</PackagePath>
-      <Modified>2020-08-03T19:12:02.923</Modified>
+      <Modified>2020-08-05T16:02:07.027</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\t-soc\Repos\InfoBarDemo\InfoBarDemo\bin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2020-08-03T19:12:02.922</Modified>
+      <Modified>2020-08-05T16:02:07.026</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\t-soc\Repos\InfoBarDemo\InfoBarDemo\bin\x86\Debug\Themes\Generic.xbf">
       <PackagePath>Themes\Generic.xbf</PackagePath>
-      <Modified>2020-08-03T19:12:02.909</Modified>
+      <Modified>2020-08-05T16:02:07.017</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.UniversalCRT.Debug\10.0.19041.0\\redist\Debug\x86\ucrtbased.dll">
       <PackagePath>ucrtbased.dll</PackagePath>
@@ -158,11 +158,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\t-soc\Repos\InfoBarDemo\InfoBarDemo\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2020-08-03T17:00:15.780</Modified>
+      <Modified>2020-08-05T16:19:30.319</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\t-soc\Repos\InfoBarDemo\InfoBarDemo\bin\x86\Debug\Core\InfoBarDemo.exe">
       <PackagePath>InfoBarDemo.exe</PackagePath>
-      <Modified>2020-08-03T19:12:05.156</Modified>
+      <Modified>2020-08-05T16:19:31.685</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

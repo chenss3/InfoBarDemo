@@ -89,9 +89,9 @@
       <RootProperty Name="FontSize" />
       <RootProperty Name="Name" />
       <RootProperty Name="Command" />
+      <RootProperty Name="CommandParameter" />
       <RootProperty Name="Style" />
       <RootProperty Name="Padding" />
-      <RootProperty Name="CommandParameter" />
       <RootEvent Name="Click" />
     </RootType>
     <RootType FullName="InfoBarDemo.InfoBar">

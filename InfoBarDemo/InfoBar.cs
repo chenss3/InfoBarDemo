@@ -19,6 +19,7 @@ using Windows.UI.Xaml.Automation.Peers;
 using Windows.ApplicationModel;
 using System.ServiceModel.Channels;
 using Windows.UI.Xaml.Documents;
+using InfoBar;
 
 namespace InfoBarDemo
 {
@@ -195,7 +196,7 @@ namespace InfoBarDemo
             {
                 if (Message != null && Message != "")
                 {
-                    if (ActionButtonContent != null)
+                    if (ActionButtonContent != null || HyperlinkButtonContent != null)
                     {
                         _message.Margin = new Thickness(0, 12, 12, 12);
                     }
@@ -588,21 +589,26 @@ namespace InfoBarDemo
         // Opens or closes the InfoBar
         private void Open(bool value)
         {
-
+            InfoBarAutomationPeer infoBarPeer = FrameworkElementAutomationPeer.FromElement(this) as InfoBarAutomationPeer ?? null;
             if (value)
             {
                 VisualStateManager.GoToState(this, "Visible", false);
                 IsOpen = true;
+                infoBarPeer.RaiseWindowOpenedEvent(Title + " "                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      + Message);
             }
             else
             {
                 VisualStateManager.GoToState(this, "Collapsed", false);
                 IsOpen = false;
                 RaiseClosedEvent();
+                infoBarPeer.RaiseWindowOpenedEvent("InfoBar dismissed");
             }
         }
 
-
+        protected override AutomationPeer OnCreateAutomationPeer()
+        {
+            return new InfoBarAutomationPeer(this);
+        }
 
     }
 }

@@ -24,8 +24,8 @@ namespace InfoBarDemo
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        private static int refreshed = 1;
-        private static bool saved = false;
+        private int refreshed = 1;
+        private bool saved = false;
 
         private List<File> Files;
         public MainPage()
